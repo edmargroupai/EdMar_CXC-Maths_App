@@ -11,13 +11,37 @@ on any conflict.
 
 ## Current phase
 
-**P08 — `@edmar/answer-core`** (`packages/answer-core/src/*`, fixtures, tests). §10 in full for
-the MVP answer types: `option_id`, `option_set`, `boolean`, the numeric family, `fraction`,
-`mixed_number`, `ratio`, `currency`, `with_units`, `coordinate`, `expression` Tier 1. This is
-D-06's shared package — the same validation logic runs on-device (I-3) and server-side
-(`fn_validate_answer`, P09), so it must be pure TypeScript with zero Postgres/React Native
-dependency. **Accept: 100% branch coverage; every case in §27.2 passes.** No database work in
-this phase — pure logic, read §10 (answer validation engine) and §27.2 closely first.
+**P09 — Database functions** (`0006_functions.sql`, `supabase/tests/functions/*.sql`). All 22
+functions from §6, including `fn_validate_answer` — the PL/pgSQL mirror of `@edmar/answer-core`
+(P08). **Accept:** every selection test in §27.3 passes; the cross-check property test (§27.2,
+5,000 generated cases, `@edmar/answer-core` in Node vs `fn_validate_answer` in Postgres — any
+disagreement fails) passes; `fn_publish_question` refuses each of its seven preconditions.
+**Commit:** `db(migration): core functions`. Read §6 in full and re-read §10.5–§10.9 (the
+normalisation/precision/tolerance rules P08 already implements) before writing the PL/pgSQL —
+`fn_validate_answer` must reproduce that logic exactly, not re-derive it from scratch. In
+particular, carry over P08's two resolved ambiguities: (1) the §10.7.4-vs-§27.2 precision
+question — an accepted-forms/canonical literal match always waives the precision check;
+`numeric_sf` checks written significant-figure count *before and independently of* value
+correctness (a mismatch is `wrong_precision` even on an otherwise-wrong value); `numeric_dp`
+only flags `wrong_precision` for *too few* written decimal places on an otherwise-*correct*
+value (extra trailing digits are never an error). (2) `equivalent_form` as a reason is used only
+by the `expression` validator (Tier 1 canonical-form match); every other type reports `exact` for
+any exactly-matching value regardless of which written form matched.
+
+**P08 — `@edmar/answer-core` — complete.** `packages/answer-core/src/*` implements §10 for the
+MVP answer types (`option_id`, `option_set`, `boolean`, `numeric_exact`/`tolerance`/`sf`/`dp`,
+`fraction`, `mixed_number`, `ratio`, `currency`, `with_units`, `coordinate`, `expression` Tier 1);
+`set`/`interval`/`matrix`/`vector`/`text`/`structured` are out of MVP scope and `validate()`
+throws a clear error for them rather than silently mis-grading. 258 tests, 100% branch coverage
+(enforced by `vitest.config.ts`'s coverage thresholds), every §27.2 case passes. Two designed
+resolutions worth knowing (both explained inline in `validators/numeric.ts` and
+`validators/expression.ts`, and restated above for P09): the precision-check ordering asymmetry
+between `numeric_sf` and `numeric_dp`, and `equivalent_form` being expression-only. Rationals are
+exact bigint fractions (`parse.ts`); unit conversion (`units.ts`) and the mathjs-based expression
+canonical-form comparison (`equivalence.ts`) use plain floats/string keys, so their "exact" checks
+use a small epsilon rather than `===`. The 5,000-case Node-vs-Postgres cross-check property test
+is a separate CI job (§30.5) that needs `fn_validate_answer` to exist — it is P09's job, not
+re-litigated here.
 
 **A real spec contradiction was found and resolved in P07, worth knowing before P09 writes
 `fn_validate_answer`**: §5.1's `has_role()` array ranks `support` *above* `reviewer`
@@ -54,7 +78,7 @@ not divide evenly across the 2 topics. `topics.paper02_marks` is left `NULL` for
 guessing a split (4/5, 5/4, or a proportional split by objective count all being invented, not
 sourced). Resolve alongside the `needs_human_review` objectives, by the same curriculum reviewer.
 
-P01–P07 are complete: monorepo foundation; shared types/design packages; local Supabase running
+P01–P08 are complete: monorepo foundation; shared types/design packages; local Supabase running
 migrations 0001 (enums), 0002 (curriculum, 3 modules/15 topics/159 V2027 objectives), 0003 (the
 16-table question bank), 0004 (identity, student progress, commerce, ops — `profiles` through
 `app_config`, plus `fn_handle_new_user` and the six FK constraints 0003 deferred — **all 45
@@ -64,7 +88,8 @@ turned out to be a P07 discovery, not something the spec called out explicitly) 
 pgTAP assertions, including a catalogue-query proof that all 45 tables have RLS enabled. Also an
 out-of-sequence mobile visual preview (`apps/mobile`, two screens, done at the user's request —
 see the git log for `feat(mobile): onboarding + sign-in visual preview`) and its Vercel build
-config (`fix(mobile): configure Vercel build for the Expo web export`). See §32 of the Technical
+config (`fix(mobile): configure Vercel build for the Expo web export`); P08 added
+`packages/answer-core` (deterministic answer validation, §10 — see "Current phase" above). See §32 of the Technical
 Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out of
 order; the dependency graph in §32.1 is binding.
 
