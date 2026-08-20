@@ -11,12 +11,27 @@ on any conflict.
 
 ## Current phase
 
-**P05 — Content schema** (migration 0003_content.sql: `questions`, `question_versions`,
-`question_options`, `solution_steps`, `common_errors`, `question_assets`, `math_renders`,
-`question_objectives`, `question_skills`, `question_sources`, `question_payloads`,
-`question_reviews`, `question_quality_metrics`, `question_reports`, `papers`,
-`paper_questions`; triggers `trg_qv_immutable`, `trg_qo_exactly_one_correct`,
-`trg_question_status_transition`).
+**P06 — Student, progress and commerce schema** (migration 0004_student.sql: `profiles`,
+`admin_role_grants`, `practice_sessions`, `practice_session_items`, `attempts`,
+`attempt_skills`, `exam_sessions`, `exam_responses`, `student_skill_mastery`,
+`student_topic_mastery`, `student_daily_usage`, `student_bookmarks`, `entitlements`,
+`subscription_events`, `audit_log`, `analytics_events`, `content_jobs`, `ai_generations`,
+`app_config` + config seeds; `fn_handle_new_user` trigger on `auth.users`).
+
+**0004 must also add the FK constraints P05 deferred**, since `profiles` didn't exist yet
+when 0003 ran: `questions.created_by`, `question_versions.created_by`,
+`question_objectives.confirmed_by`, `question_reviews.reviewer_id`,
+`question_reports.reporter_id` (`ON DELETE SET NULL`), `question_reports.resolved_by` — all
+`references profiles(id)`. Each column already exists as a plain `uuid` in 0003; 0004 only
+needs `ALTER TABLE ... ADD CONSTRAINT ... FOREIGN KEY`.
+
+**Outstanding human task, on the critical path for P05 → P12 (question content), not for P05's
+own schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
+(two-column PDF extraction bled the CONTENT/EXPLANATORY NOTES column into the objective text —
+§0.3). A curriculum reviewer must correct `content/taxonomy/csec_2027_taxonomy_seed.json` and
+re-run `node scripts/gen-taxonomy-seed.js` before any question is mapped against one of those 44
+objectives. Query the current list with:
+`select code, statement from specific_objectives where needs_human_review order by code;`
 
 **Outstanding human task, on the critical path for P05 → P12 (question content), not for P05's
 own schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
@@ -33,11 +48,23 @@ not divide evenly across the 2 topics. `topics.paper02_marks` is left `NULL` for
 guessing a split (4/5, 5/4, or a proportional split by objective count all being invented, not
 sourced). Resolve alongside the `needs_human_review` objectives, by the same curriculum reviewer.
 
-P01–P04 are complete: monorepo foundation; shared types/design packages; local Supabase running
-migrations 0001 (enums) and 0002 (curriculum schema, seeded with 3 modules / 15 topics / 159
-V2027 objectives) — 58 passing pgTAP assertions. See §32 of the Technical Build Spec for the full
-22-phase plan and acceptance criteria. Do not start a phase out of order; the dependency graph in
-§32.1 is binding.
+P01–P05 are complete: monorepo foundation; shared types/design packages; local Supabase running
+migrations 0001 (enums), 0002 (curriculum schema, seeded with 3 modules / 15 topics / 159 V2027
+objectives) and 0003 (the 16-table question bank schema — `questions` through `paper_questions`,
+plus `trg_qv_immutable`, `trg_qo_exactly_one_correct`, `trg_question_status_transition`, and
+`answer_spec` JSON Schema validation via `pg_jsonschema`) — 113 passing pgTAP assertions. Also an
+out-of-sequence mobile visual preview (`apps/mobile`, two screens, done at the user's request —
+see the git log for `feat(mobile): onboarding + sign-in visual preview`). See §32 of the
+Technical Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out
+of order; the dependency graph in §32.1 is binding.
+
+**Unexplained files found in the repo root during P05, not committed**: a folder named
+`CXC Mathematics Past Papers Answer Key/` containing ~28 third-party CSEC past-paper answer-key
+PDFs appeared between sessions — not created by any phase here. This is exactly the
+third-party-copyright material §0.5/R-01 gates behind a legal rights decision before it may ever
+be ingested or published. Left untouched and ungitignored on purpose: ask the founder what it is
+and where it should go (`content/sources/`, if anywhere) before doing anything with it — do not
+fold it into an unrelated commit, and do not delete it.
 
 Local dev note: another Supabase project (`edmar-risepath` — the legacy prototype referenced in
 §0.1) runs on this host on the default CLI ports. This project's `supabase/config.toml` is
