@@ -11,11 +11,21 @@ on any conflict.
 
 ## Current phase
 
-**P03 — Supabase project and enums** (migration 0001: every enum from §3.0 plus
-`trg_set_updated_at`). P01 (repository foundation) and P02 (`@edmar/types`, `@edmar/design`
-tokens) are complete. See §32 of the Technical Build Spec for the full 22-phase plan and
-acceptance criteria. Do not start a phase out of order; the dependency graph in §32.1 is
-binding.
+**P04 — Curriculum schema and taxonomy seed** (migration 0002: `subjects`, `syllabus_versions`,
+`modules`, `topics`, `subtopics`, `specific_objectives`, `skills`, `skill_prerequisites`,
+`skill_objectives`, `objective_mappings`; seed the real V2027 data from
+`content/taxonomy/csec_2027_taxonomy_seed.json`). **This phase has a human task on the critical
+path: the 44 objectives flagged `needs_human_review` must be verified before P05 begins — no
+software substitute (§0.3, Appendix B).** P01–P03 are complete: monorepo foundation, shared
+types/design packages, and local Supabase running with migration 0001 (enums + the
+`trg_set_updated_at` helper), verified by 39 passing pgTAP assertions. See §32 of the Technical
+Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out of
+order; the dependency graph in §32.1 is binding.
+
+Local dev note: another Supabase project (`edmar-risepath` — the legacy prototype referenced in
+§0.1) runs on this host on the default CLI ports. This project's `supabase/config.toml` is
+shifted +100 (API 54421, DB 54422, Studio 54423, Inbucket 54424, Analytics 54427) to avoid the
+collision — do not "fix" these back to the defaults.
 
 ---
 

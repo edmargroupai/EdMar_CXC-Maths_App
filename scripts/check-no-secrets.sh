@@ -15,6 +15,12 @@ COMMON_EXCLUDES=(
   --exclude-dir=.expo
   --exclude-dir=coverage
   --exclude-dir=supabase/functions
+  # Generated local Supabase CLI state (catalog snapshots, branch data) —
+  # gitignored (supabase/.gitignore), never committed, and legitimately full
+  # of real Postgres grants/roles. --exclude-dir matches on basename, so this
+  # also skips any nested .temp/.branches dir, which is fine here.
+  --exclude-dir=.temp
+  --exclude-dir=.branches
   # Prose documentation (this spec, ADRs, runbooks) legitimately names and
   # quotes these forbidden strings when describing the security model.
   --exclude-dir=docs
@@ -22,6 +28,11 @@ COMMON_EXCLUDES=(
   # search for — that is the implementation of the check, not a leak.
   --exclude-dir=scripts
   --exclude=.env.example
+  # Supabase CLI-generated boilerplate (supabase/config.toml): its own
+  # comment documents the standard Data API role names
+  # (anon/authenticated/service_role), not a credential. --exclude matches on
+  # basename, and there is only one config.toml in this repo.
+  --exclude=config.toml
 )
 
 FOUND=0
