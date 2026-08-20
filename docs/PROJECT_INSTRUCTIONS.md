@@ -11,21 +11,47 @@ on any conflict.
 
 ## Current phase
 
-**P04 — Curriculum schema and taxonomy seed** (migration 0002: `subjects`, `syllabus_versions`,
-`modules`, `topics`, `subtopics`, `specific_objectives`, `skills`, `skill_prerequisites`,
-`skill_objectives`, `objective_mappings`; seed the real V2027 data from
-`content/taxonomy/csec_2027_taxonomy_seed.json`). **This phase has a human task on the critical
-path: the 44 objectives flagged `needs_human_review` must be verified before P05 begins — no
-software substitute (§0.3, Appendix B).** P01–P03 are complete: monorepo foundation, shared
-types/design packages, and local Supabase running with migration 0001 (enums + the
-`trg_set_updated_at` helper), verified by 39 passing pgTAP assertions. See §32 of the Technical
-Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out of
-order; the dependency graph in §32.1 is binding.
+**P05 — Content schema** (migration 0003_content.sql: `questions`, `question_versions`,
+`question_options`, `solution_steps`, `common_errors`, `question_assets`, `math_renders`,
+`question_objectives`, `question_skills`, `question_sources`, `question_payloads`,
+`question_reviews`, `question_quality_metrics`, `question_reports`, `papers`,
+`paper_questions`; triggers `trg_qv_immutable`, `trg_qo_exactly_one_correct`,
+`trg_question_status_transition`).
+
+**Outstanding human task, on the critical path for P05 → P12 (question content), not for P05's
+own schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
+(two-column PDF extraction bled the CONTENT/EXPLANATORY NOTES column into the objective text —
+§0.3). A curriculum reviewer must correct `content/taxonomy/csec_2027_taxonomy_seed.json` and
+re-run `node scripts/gen-taxonomy-seed.js` before any question is mapped against one of those 44
+objectives. Query the current list with:
+`select code, statement from specific_objectives where needs_human_review order by code;`
+
+**Open item raised during P04, not in the spec's own tracking table**:
+**[CXC-DISCREPANCY-02]** — §0.3's per-topic Paper 02 mark table gives Number Theory and
+Computation + Consumer Arithmetic a combined 9 marks with no stated per-topic split, and 9 does
+not divide evenly across the 2 topics. `topics.paper02_marks` is left `NULL` for both rather than
+guessing a split (4/5, 5/4, or a proportional split by objective count all being invented, not
+sourced). Resolve alongside the `needs_human_review` objectives, by the same curriculum reviewer.
+
+P01–P04 are complete: monorepo foundation; shared types/design packages; local Supabase running
+migrations 0001 (enums) and 0002 (curriculum schema, seeded with 3 modules / 15 topics / 159
+V2027 objectives) — 58 passing pgTAP assertions. See §32 of the Technical Build Spec for the full
+22-phase plan and acceptance criteria. Do not start a phase out of order; the dependency graph in
+§32.1 is binding.
 
 Local dev note: another Supabase project (`edmar-risepath` — the legacy prototype referenced in
 §0.1) runs on this host on the default CLI ports. This project's `supabase/config.toml` is
 shifted +100 (API 54421, DB 54422, Studio 54423, Inbucket 54424, Analytics 54427) to avoid the
 collision — do not "fix" these back to the defaults.
+
+Also discovered during P04: the legacy prototype source tree referenced throughout §0.1/§12 —
+including `data/curriculum/jamaica/EdMar_CXC_Mathematics_Workbook_2026.pdf` (the primary MVP
+content source), `CSEC_Mathematics_Syllabus_2027.pdf`, and every legacy JSON file (skill map,
+diagnostic bank, lesson bank, etc.) — is present and readable at
+`C:\Users\kemar\Projects\EdMar-AI\edmar_work\EdMar-AI-phase10\`. Nothing has been copied into
+this repo yet; P12 (legacy import) and P20 (content pipeline) are where that happens, per §12 and
+§13, each with its own field-mapping and provenance rules — do not hand-copy from there in an
+unrelated phase.
 
 ---
 

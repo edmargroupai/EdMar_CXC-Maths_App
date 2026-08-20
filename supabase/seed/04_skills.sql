@@ -1,0 +1,7 @@
+-- Intentionally empty in P04.
+--
+-- §12.1 (priority 1): the real 17-skill vocabulary and its 15
+-- prerequisite edges are legacy data (data/csec_skill_map_phase3.json),
+-- migrated with full legacy_id provenance by scripts/import-legacy.ts in
+-- P12 — not hand-seeded here. Inventing a skill list now would conflict
+-- with that import (duplicate rows, no audit trail) rather than help it.
