@@ -8,6 +8,17 @@
 // flat `{ from: "type", allow: ["type"] }` shorthand is a deprecated legacy
 // syntax under v7 that this plugin version does not reliably enforce.
 const boundaries = require("eslint-plugin-boundaries");
+const path = require("node:path");
+
+// eslint-plugin-boundaries resolves its "apps/mobile/**"-style element
+// patterns against `boundaries/root-path`, which does NOT default to the
+// monorepo root — it defaults to process.cwd() at the time eslint runs. Since
+// every workspace's `lint` script runs `eslint .` from inside that package's
+// own directory (turbo runs each package's script in-place), the default
+// would silently break every pattern below. Anchor it explicitly instead:
+// this file lives at packages/config/eslint/boundaries.js, three directories
+// below the repo root.
+const monorepoRoot = path.resolve(__dirname, "..", "..", "..");
 
 const allPackageTypes = [
   "pkg-types",
@@ -38,6 +49,7 @@ module.exports = [
       // relative import in a .ts file resolves to "unknown" and the
       // dependencies rule silently skips it (checkUnknownLocals is off).
       "import/resolver": { node: { extensions: [".js", ".jsx", ".ts", ".tsx"] } },
+      "boundaries/root-path": monorepoRoot,
       "boundaries/elements": [
         { type: "mobile", pattern: "apps/mobile/**" },
         { type: "admin", pattern: "apps/admin/**" },

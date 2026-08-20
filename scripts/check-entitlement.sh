@@ -9,7 +9,9 @@ FOUND=0
 
 if [ -d "$MOBILE_DIR" ]; then
   if matches=$(grep -RnE "===[[:space:]]*['\"]premium['\"]|tier[[:space:]]*===" \
-      --include='*.ts' --include='*.tsx' "$MOBILE_DIR" 2>/dev/null \
+      --include='*.ts' --include='*.tsx' \
+      --exclude-dir=node_modules --exclude-dir=.expo --exclude-dir=dist --exclude-dir=web-build \
+      "$MOBILE_DIR" 2>/dev/null \
       | grep -Ev '/useEntitlement\.ts:|/PremiumGate\.tsx:'); then
     echo "Premium/tier logic found outside useEntitlement.ts / PremiumGate.tsx:"
     echo "$matches"

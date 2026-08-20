@@ -17,7 +17,10 @@ for dir in $SEARCH_DIRS; do
     case "$file" in
       *.test.*|*.spec.*|*/__fixtures__/*|*/fixtures/*|*.generated.*) continue ;;
     esac
-    hits=$(grep -Eo "$KEYS" "$file" | sort -u | wc -l)
+    # grep exits 1 on no match; with pipefail that would trip `set -e` on this
+    # bare assignment (the overwhelmingly common case: most files match none
+    # of $KEYS) — `|| true` keeps $hits correctly at 0 instead of aborting.
+    hits=$(grep -Eo "$KEYS" "$file" | sort -u | wc -l) || true
     if [ "$hits" -ge 2 ]; then
       echo "Possible hard-coded question content in $file (matched $hits of: stem, correctAnswer, answerSpec, solutionSteps, distractors)"
       FOUND=1

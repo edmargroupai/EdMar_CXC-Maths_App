@@ -30,7 +30,10 @@ if [ -f "$MOBILE_DIR/package.json" ]; then
   fi
 fi
 
-if matches=$(grep -REin "$FORBIDDEN_IMPORT_REGEX" --include='*.ts' --include='*.tsx' --include='*.js' "$MOBILE_DIR" 2>/dev/null); then
+if matches=$(grep -REin "$FORBIDDEN_IMPORT_REGEX" \
+    --include='*.ts' --include='*.tsx' --include='*.js' \
+    --exclude-dir=node_modules --exclude-dir=.expo --exclude-dir=dist --exclude-dir=web-build \
+    "$MOBILE_DIR" 2>/dev/null); then
   echo "Forbidden AI import/reference found in $MOBILE_DIR source:"
   echo "$matches"
   FOUND=1

@@ -2,12 +2,15 @@
 //
 // Colour, type, space and radii tokens (Technical Build Spec §33 file map).
 //
-// PLACEHOLDER PALETTE. EdMar's real brand assets (logo, palette, type) are an
-// open item owned by the founder, due before P14 (Appendix B). Until they
-// land, every value below is a brand-neutral, accessibility-checked default
-// so mobile-shell work (P14) is not blocked on brand delivery. Swapping the
-// palette is a change to this file only — nothing downstream should hard-code
-// a colour value (B-17: 4.5:1 text contrast; B-8/D.3 dark mode).
+// Palette below is transcribed (by eye, not a colour-picker) from the
+// onboarding/login mockups supplied 2026-08-19 — navy + gold. Treat the hex
+// values as close approximations pending real brand guideline files, not
+// exact swatches. Note this differs from EdMar's existing print-publisher
+// mark (E2P | EdMar Education Publishers — dark green + gold); nothing here
+// reconciles the two, that's a founder decision, not an engineering one.
+// Swapping the palette later is a change to this file only — nothing
+// downstream should hard-code a colour value (B-17: 4.5:1 text contrast;
+// B-8/D.3 dark mode).
 
 export const spacing = {
   none: 0,
@@ -71,12 +74,27 @@ const primitives = {
   gray700: "#495057",
   gray800: "#343A40",
   gray900: "#212529",
-  brand50: "#EDF4FF",
-  brand100: "#D6E4FF",
-  brand300: "#7FAEFF",
-  brand500: "#2563EB",
-  brand600: "#1D4ED8",
-  brand700: "#1E40AF",
+  // Navy — the onboarding hero surface and wordmark colour.
+  navy50: "#EAF0FB",
+  navy100: "#C7D5F0",
+  navy300: "#5C7BC4",
+  navy500: "#1B3A82",
+  navy600: "#132C6B",
+  navy700: "#0D2158",
+  navy900: "#081638",
+  // Interactive blue — buttons/links on light surfaces (distinct from navy,
+  // matches the login screen's "Sign In" button).
+  brand50: "#EAF0FE",
+  brand100: "#CBDAFC",
+  brand300: "#5C86E8",
+  brand500: "#2554C7",
+  brand600: "#1E44A8",
+  brand700: "#173583",
+  // Gold — the CTA / accent colour ("Master Maths.", "Get Started").
+  gold300: "#FFDE85",
+  gold500: "#FFC72C",
+  gold600: "#E6AC00",
+  gold700: "#B38300",
   success500: "#2F9E44",
   success700: "#1B7A2E",
   error500: "#E03131",
@@ -86,24 +104,30 @@ const primitives = {
 } as const;
 
 export const colorsLight = {
-  background: primitives.white,
-  surface: primitives.gray50,
+  background: "#F4F8FD",
+  surface: primitives.white,
   surfaceRaised: primitives.white,
   border: primitives.gray300,
-  textPrimary: primitives.gray900,
+  textPrimary: primitives.navy900,
   textSecondary: primitives.gray700,
   textOnBrand: primitives.white,
   textDisabled: primitives.gray500,
   brand: primitives.brand500,
   brandPressed: primitives.brand600,
   brandSubtle: primitives.brand50,
+  navy: primitives.navy600,
+  navyDeep: primitives.navy900,
+  navySubtle: primitives.navy50,
+  gold: primitives.gold500,
+  goldPressed: primitives.gold600,
+  textOnGold: primitives.navy900,
   success: primitives.success700,
   successSubtle: "#EBFBEE",
   error: primitives.error700,
   errorSubtle: "#FFF5F5",
   warning: primitives.warning700,
   warningSubtle: "#FFF9DB",
-  overlay: "rgba(33, 37, 41, 0.5)",
+  overlay: "rgba(8, 22, 56, 0.55)",
 } as const;
 
 export const colorsDark = {
@@ -118,6 +142,12 @@ export const colorsDark = {
   brand: primitives.brand300,
   brandPressed: primitives.brand100,
   brandSubtle: "#132347",
+  navy: primitives.navy300,
+  navyDeep: primitives.navy900,
+  navySubtle: "#0F1E43",
+  gold: primitives.gold300,
+  goldPressed: primitives.gold500,
+  textOnGold: primitives.navy900,
   success: "#69DB7C",
   successSubtle: "#0F3D1A",
   error: "#FF8787",
