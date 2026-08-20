@@ -15,6 +15,12 @@ COMMON_EXCLUDES=(
   --exclude-dir=.expo
   --exclude-dir=coverage
   --exclude-dir=supabase/functions
+  # supabase/migrations/*.sql legitimately GRANTs privileges to the real
+  # Postgres roles named service_role/authenticated/anon (§5, P07) — that is
+  # the role name, not the SUPABASE_SERVICE_ROLE_KEY credential this check
+  # actually guards against. --exclude-dir matches on basename; "migrations"
+  # is unambiguous in this repo.
+  --exclude-dir=migrations
   # Generated local Supabase CLI state (catalog snapshots, branch data) —
   # gitignored (supabase/.gitignore), never committed, and legitimately full
   # of real Postgres grants/roles. --exclude-dir matches on basename, so this

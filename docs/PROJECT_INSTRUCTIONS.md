@@ -11,15 +11,33 @@ on any conflict.
 
 ## Current phase
 
-**P07 — RLS and the RLS test suite** (0005_rls.sql, `supabase/tests/rls/*.sql`). Every policy
-in §5.2's matrix, the four helper functions in §5.1 (`auth_role`, `is_staff`, `has_role`,
-`has_premium`), and a test for **both directions of every cell** (a student cannot read a
-draft, another student's attempts, or a premium payload; staff/service-role access works as
-specified). Per the spec: **this phase does not complete on "the tests I wrote pass" — it
-completes when a catalogue query proves RLS is enabled on all 45 tables and no table was
-missed.** The paywall policy (§5.3, on `question_payloads`) is the single most important
-policy in the system — get its test right. Anonymous access (§5.4) reuses the same policies
-via Supabase anonymous sign-in; no special-cased public read policy.
+**P08 — `@edmar/answer-core`** (`packages/answer-core/src/*`, fixtures, tests). §10 in full for
+the MVP answer types: `option_id`, `option_set`, `boolean`, the numeric family, `fraction`,
+`mixed_number`, `ratio`, `currency`, `with_units`, `coordinate`, `expression` Tier 1. This is
+D-06's shared package — the same validation logic runs on-device (I-3) and server-side
+(`fn_validate_answer`, P09), so it must be pure TypeScript with zero Postgres/React Native
+dependency. **Accept: 100% branch coverage; every case in §27.2 passes.** No database work in
+this phase — pure logic, read §10 (answer validation engine) and §27.2 closely first.
+
+**A real spec contradiction was found and resolved in P07, worth knowing before P09 writes
+`fn_validate_answer`**: §5.1's `has_role()` array ranks `support` *above* `reviewer`
+(`['student','viewer','reviewer','support','curriculum_admin','content_admin','super_admin']`),
+so `has_role('reviewer')` is true for a support caller — but §21.3 says support has "**No
+content rights**", and §27.4's own example test expects a support caller blocked from editing
+`question_versions`. Added `is_content_role()` (`reviewer`/`curriculum_admin`/`content_admin`/
+`super_admin`, explicitly excluding `support`) and used it for every content-authoring policy;
+`has_role('support')` is still correct and unchanged everywhere else (attempts, entitlements,
+practice_sessions visibility, `question_reports` resolution — support genuinely owns reports
+per §21.3). If P09 or the admin console (P19) reaches for a "can this role touch content"
+check, use `is_content_role()`, not `has_role('reviewer')`.
+
+**Also found in P07**: `supabase/tests/rls/*` had to use `is_empty($$ ... returning 1 $$, ...)`
+rather than `throws_ok(..., '42501', ...)` for most negative write cases. In real Postgres RLS,
+a missing/failing `USING` clause on UPDATE/DELETE **silently matches zero rows** — it does not
+raise an error. Only a `WITH CHECK` failure (the *new* row is invalid) throws 42501. §27.4's
+worked examples use `throws_ok` for some of these cases; where that didn't match verified
+behavior against the real local instance, the test was written to match reality, not the
+example's exact shape.
 
 **Outstanding human task, on the critical path for P05 → P12 (question content), not blocking
 schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
@@ -36,19 +54,27 @@ not divide evenly across the 2 topics. `topics.paper02_marks` is left `NULL` for
 guessing a split (4/5, 5/4, or a proportional split by objective count all being invented, not
 sourced). Resolve alongside the `needs_human_review` objectives, by the same curriculum reviewer.
 
-P01–P06 are complete: monorepo foundation; shared types/design packages; local Supabase running
+P01–P07 are complete: monorepo foundation; shared types/design packages; local Supabase running
 migrations 0001 (enums), 0002 (curriculum, 3 modules/15 topics/159 V2027 objectives), 0003 (the
-16-table question bank) and 0004 (identity, student progress, commerce, ops — `profiles` through
-`app_config`, plus `fn_handle_new_user` and the six FK constraints 0003 deferred) — **all 45
-tables now exist**, 138 passing pgTAP assertions. Also an out-of-sequence mobile visual preview
-(`apps/mobile`, two screens, done at the user's request — see the git log for
-`feat(mobile): onboarding + sign-in visual preview`) and its Vercel build config
-(`fix(mobile): configure Vercel build for the Expo web export`). See §32 of the Technical Build
-Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out of order; the
-dependency graph in §32.1 is binding. **No RLS policy exists on any table yet** — every table
-created so far is readable/writable by any authenticated role until P07 lands; this is expected
-at this stage (see the note repeated at the top of each 000X migration) but means the local
-Supabase instance must never hold anything sensitive.
+16-table question bank), 0004 (identity, student progress, commerce, ops — `profiles` through
+`app_config`, plus `fn_handle_new_user` and the six FK constraints 0003 deferred — **all 45
+tables now exist**) and 0005 (RLS: the four §5.1 helpers + `is_content_role()`, every policy in
+§5.2's matrix including the §5.3 paywall, base GRANTs to `authenticated`/`service_role` that
+turned out to be a P07 discovery, not something the spec called out explicitly) — 187 passing
+pgTAP assertions, including a catalogue-query proof that all 45 tables have RLS enabled. Also an
+out-of-sequence mobile visual preview (`apps/mobile`, two screens, done at the user's request —
+see the git log for `feat(mobile): onboarding + sign-in visual preview`) and its Vercel build
+config (`fix(mobile): configure Vercel build for the Expo web export`). See §32 of the Technical
+Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out of
+order; the dependency graph in §32.1 is binding.
+
+**RLS is now live on every table.** Local dev/testing as a specific actor requires
+`set local role authenticated; select set_config('request.jwt.claims', '{"sub":"<uuid>"}', true);`
+before querying — see `supabase/tests/rls/policy_matrix.sql` for the pattern. Fixture setup
+(inserting test data across actors) must happen as `postgres` (superuser, RLS-exempt) *before*
+switching role. `anon` has zero policies anywhere by design (§5.4 rejects a public/unauthenticated
+read path) — pre-registration students use Supabase anonymous sign-in, which is a real
+`auth.users` row hitting RLS as `authenticated`, not the bare `anon` role.
 
 **Source material added by the founder**: `content/sources/cxc-past-papers-answer-keys/` (28
 PDFs, moved here from a loose repo-root folder the founder confirmed adding). This is
