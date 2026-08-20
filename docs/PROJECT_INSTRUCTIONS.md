@@ -58,13 +58,13 @@ see the git log for `feat(mobile): onboarding + sign-in visual preview`). See §
 Technical Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out
 of order; the dependency graph in §32.1 is binding.
 
-**Unexplained files found in the repo root during P05, not committed**: a folder named
-`CXC Mathematics Past Papers Answer Key/` containing ~28 third-party CSEC past-paper answer-key
-PDFs appeared between sessions — not created by any phase here. This is exactly the
-third-party-copyright material §0.5/R-01 gates behind a legal rights decision before it may ever
-be ingested or published. Left untouched and ungitignored on purpose: ask the founder what it is
-and where it should go (`content/sources/`, if anywhere) before doing anything with it — do not
-fold it into an unrelated commit, and do not delete it.
+**Source material added by the founder**: `content/sources/cxc-past-papers-answer-keys/` (28
+PDFs, moved here from a loose repo-root folder the founder confirmed adding). This is
+third-party CSEC past-paper answer-key material — §0.5/R-01's lowest-priority, rights-gated
+source ("third-party copyright, gated on the R-01 legal decision. Ingest last, behind a feature
+flag, and never publish until rights are confirmed"). Do not feed it into the pipeline (P20) or
+`scripts/import-legacy.ts` (P12) ahead of a rights decision on R-01, and any question sourced
+from it must carry `rights_status = 'third_party_unlicensed'` until that's resolved.
 
 Local dev note: another Supabase project (`edmar-risepath` — the legacy prototype referenced in
 §0.1) runs on this host on the default CLI ports. This project's `supabase/config.toml` is
