@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "expo-router";
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Circle, Path } from "react-native-svg";
 import { radii, spacing } from "@edmar/design";
@@ -8,16 +8,40 @@ import { LogoMark, Wordmark } from "@/src/components/Logo";
 import { MathDoodles } from "@/src/components/MathDoodles";
 import { PrimaryButton } from "@/src/components/PrimaryButton";
 import { useThemeColors } from "@/src/theme/useThemeColors";
+import { supabase } from "@/src/lib/supabase";
+import { useAuth } from "@/src/lib/AuthContext";
 
 // S-02/S-03 (§17.3) visual preview of email+password / Google / Facebook
-// sign-in (blueprint §C.2). Not wired to Supabase Auth yet — that, the
-// age-band gate, and the anonymous->permanent migration are P13 (§25.1).
+// sign-in (blueprint §C.2). Email+password now calls Supabase Auth directly
+// as a minimal out-of-sequence slice (see src/lib/supabase.ts) so the
+// already-built schema/RLS can be exercised end-to-end; the age-band gate,
+// anonymous->permanent migration, and social sign-in are still P13 (§25.1).
 export default function SignInScreen() {
   const router = useRouter();
   const colors = useThemeColors();
+  const { setSession } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  async function handleSignIn() {
+    if (submitting || email.trim().length === 0 || password.length === 0) return;
+    setError(null);
+    setSubmitting(true);
+    const { data, error: signInError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+    setSubmitting(false);
+    if (signInError) {
+      setError(signInError.message);
+      return;
+    }
+    setSession(data.session);
+    router.replace("/(app)/home");
+  }
 
   return (
     <View style={[styles.root, { backgroundColor: colors.background }]}>
@@ -86,12 +110,13 @@ export default function SignInScreen() {
               <Text style={[styles.forgotText, { color: colors.brand }]}>Forgot Password?</Text>
             </Pressable>
 
+            {error ? <Text style={[styles.errorText, { color: colors.error }]}>{error}</Text> : null}
+
             <PrimaryButton
-              label="Sign In"
+              label={submitting ? "Signing in…" : "Sign In"}
               variant="brand"
-              onPress={() => {
-                // No backend yet (P13). Visual preview only.
-              }}
+              onPress={handleSignIn}
+              icon={submitting ? <ActivityIndicator color={colors.textOnBrand} /> : undefined}
             />
 
             <View style={styles.dividerRow}>
@@ -304,6 +329,10 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   forgotText: {
+    fontSize: 13,
+    fontWeight: "600",
+  },
+  errorText: {
     fontSize: 13,
     fontWeight: "600",
   },
