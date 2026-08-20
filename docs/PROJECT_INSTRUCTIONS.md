@@ -89,6 +89,22 @@ Local dev note: another Supabase project (`edmar-risepath` — the legacy protot
 shifted +100 (API 54421, DB 54422, Studio 54423, Inbucket 54424, Analytics 54427) to avoid the
 collision — do not "fix" these back to the defaults.
 
+**Cloud project (`EdMar_CXC-Maths_App`, ref `jqwjnsnlsiuggwntirqv`) is now linked and live** —
+all 5 migrations pushed via `supabase db push`, taxonomy seed applied manually (see below), 45
+tables / RLS confirmed by direct query. `supabase link --project-ref jqwjnsnlsiuggwntirqv --yes`
+succeeded without needing the DB password (management-API auth was sufficient for both `link`
+and `db push` in this CLI version) — the pooler credentials the founder pasted were never
+actually needed. **`supabase db push` only applies `supabase/migrations/*.sql` — it does NOT
+run `supabase/seed/*.sql`.** That's a local/CI-only concept (`db reset` applies both; `db push`
+is migrations-only, and the spec's own §30.6 deployment table doesn't mention seeding at all).
+After every `db push` to a real environment, the taxonomy seed must be applied separately:
+`supabase db query --linked --file supabase/seed/01_syllabus_v2027.sql` (repeat for 02, 03, 04,
+in order — they have FK dependencies on each other). `app_config`'s 9 keys don't need this: P06
+seeded those directly inside 0004_student.sql for exactly this reason (see that migration's own
+comment). This gap will recur for every future environment (staging, then real production) and
+whenever new taxonomy/skill seed files are added — worth a real deploy-pipeline step (§30.6) by
+P22, not another manual catch-up.
+
 Also discovered during P04: the legacy prototype source tree referenced throughout §0.1/§12 —
 including `data/curriculum/jamaica/EdMar_CXC_Mathematics_Workbook_2026.pdf` (the primary MVP
 content source), `CSEC_Mathematics_Syllabus_2027.pdf`, and every legacy JSON file (skill map,
