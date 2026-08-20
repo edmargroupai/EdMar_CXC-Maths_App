@@ -11,10 +11,11 @@ on any conflict.
 
 ## Current phase
 
-**P02 — Shared packages skeleton** (`@edmar/types`, `@edmar/design` tokens).
-P01 — Repository foundation — is complete. See §32 of the Technical Build Spec for the full
-22-phase plan and acceptance criteria. Do not start a phase out of order; the dependency
-graph in §32.1 is binding.
+**P03 — Supabase project and enums** (migration 0001: every enum from §3.0 plus
+`trg_set_updated_at`). P01 (repository foundation) and P02 (`@edmar/types`, `@edmar/design`
+tokens) are complete. See §32 of the Technical Build Spec for the full 22-phase plan and
+acceptance criteria. Do not start a phase out of order; the dependency graph in §32.1 is
+binding.
 
 ---
 
