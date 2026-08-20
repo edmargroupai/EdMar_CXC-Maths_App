@@ -1,0 +1,50 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build outputs
+dist/
+build/
+out/
+.next/
+.expo/
+.turbo/
+*.tsbuildinfo
+
+# env
+.env
+.env.local
+.env.*.local
+
+# logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# editor / OS
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# test / coverage
+coverage/
+.nyc_output/
+
+# expo / eas
+*.orig.*
+web-build/
+
+# supabase
+supabase/.branches
+supabase/.temp
+
+# python (apps/pipeline)
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# misc
+*.local

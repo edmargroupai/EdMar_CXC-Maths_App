@@ -1,0 +1,26 @@
+{
+  "name": "edmar-cxc-maths",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EdMar CXC Mathematics — monorepo (student app, admin console, content pipeline)",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:db": "turbo run test:db",
+    "build": "turbo run build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "check:invariants": "bash scripts/check-no-secrets.sh && bash scripts/check-no-ai-in-mobile.sh && bash scripts/check-no-service-role.sh && bash scripts/check-entitlement.sh && bash scripts/check-no-hardcoded-questions.sh"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3",
+    "turbo": "^2.1.2",
+    "typescript": "^5.6.2"
+  }
+}

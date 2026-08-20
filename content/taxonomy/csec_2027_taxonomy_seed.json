@@ -1,0 +1,1372 @@
+{
+  "syllabus_code": "CXC 05/G/SYLL 16",
+  "syllabus_version": "V2027",
+  "effective_from": "May-June 2027",
+  "source_pdf": "CSEC_Mathematics_Syllabus_2027.pdf",
+  "extraction_note": "Machine-extracted from a two-column PDF. Objective CODES and NUMBERING are reliable. Objective TEXT may contain bleed from the CONTENT/EXPLANATORY NOTES column and MUST be human-verified before use (blueprint item VERIFY-CXC-02).",
+  "modules": [
+    {
+      "module_no": 1,
+      "name": "Fundamentals of Secondary Level Mathematics"
+    },
+    {
+      "module_no": 2,
+      "name": "Intermediate Secondary Level Mathematics"
+    },
+    {
+      "module_no": 3,
+      "name": "Higher Concepts in Secondary Level Mathematics"
+    }
+  ],
+  "topics": [
+    {
+      "module_no": 1,
+      "topic_no": 1,
+      "name": "Number Theory and Computation"
+    },
+    {
+      "module_no": 1,
+      "topic_no": 2,
+      "name": "Consumer Arithmetic"
+    },
+    {
+      "module_no": 1,
+      "topic_no": 3,
+      "name": "Sets"
+    },
+    {
+      "module_no": 1,
+      "topic_no": 4,
+      "name": "Measurement"
+    },
+    {
+      "module_no": 1,
+      "topic_no": 5,
+      "name": "Algebra 1"
+    },
+    {
+      "module_no": 1,
+      "topic_no": 6,
+      "name": "Introduction To Graphs"
+    },
+    {
+      "module_no": 2,
+      "topic_no": 1,
+      "name": "Statistics 1"
+    },
+    {
+      "module_no": 2,
+      "topic_no": 2,
+      "name": "Algebra 2"
+    },
+    {
+      "module_no": 2,
+      "topic_no": 3,
+      "name": "Relations, Functions and Graphs 1"
+    },
+    {
+      "module_no": 2,
+      "topic_no": 4,
+      "name": "Geometry and Trigonometry 1"
+    },
+    {
+      "module_no": 2,
+      "topic_no": 5,
+      "name": "Vectors and Matrices 1"
+    },
+    {
+      "module_no": 3,
+      "topic_no": 1,
+      "name": "Statistics 2"
+    },
+    {
+      "module_no": 3,
+      "topic_no": 2,
+      "name": "Relations, Functions and Graphs 2"
+    },
+    {
+      "module_no": 3,
+      "topic_no": 3,
+      "name": "Geometry and Trigonometry 2"
+    },
+    {
+      "module_no": 3,
+      "topic_no": 4,
+      "name": "Vectors and Matrices 2"
+    }
+  ],
+  "specific_objectives": [
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 1,
+      "code": "M1-1.1",
+      "text": "distinguish among sets of numbers; Sets of numbers:",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 2,
+      "code": "M1-1.2",
+      "text": "compute powers of real numbers of the form 𝓍 𝑎 , where 𝑎 ∈ ℚ ;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 3,
+      "code": "M1-1.3",
+      "text": "evaluate numerical expressions using any of the four basic operations on real numbers; of operations.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 4,
+      "code": "M1-1.4",
+      "text": "convert among fractions, percents and decimals; percentages, conversion of decimal to fractions and percentages, conversion of percentages to decimals and fractions.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 5,
+      "code": "M1-1.5",
+      "text": "list the set of factors and multiples of a given integer;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 6,
+      "code": "M1-1.6",
+      "text": "compute the H.C.F. or L.C.M. of two or more positive integers; multiples.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 7,
+      "code": "M1-1.7",
+      "text": "state the value of a digit of a numeral in a given base; 4, 8, and 10.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 8,
+      "code": "M1-1.8",
+      "text": "convert from one set of units to Conversion using conversion scales, converting another; within the metric scales, 12-hour and 24-hour clock.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 9,
+      "code": "M1-1.9",
+      "text": "express a value to a given number of:",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 10,
+      "code": "M1-1.10",
+      "text": "use properties of numbers and Properties of operations such as closure, operations in computational tasks; and inverses, commutativity and distributivity.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 11,
+      "code": "M1-1.11",
+      "text": "calculate any fraction or percentage of a given quantity; given a fraction or percentage.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 12,
+      "code": "M1-1.12",
+      "text": "write any rational number in Scientific notation. scientific notation;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 13,
+      "code": "M1-1.13",
+      "text": "express one quantity as a fraction or percentage of another; percentages.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 14,
+      "code": "M1-1.14",
+      "text": "compare quantities; Ratio, proportion and rates.",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 15,
+      "code": "M1-1.15",
+      "text": "order a set of real numbers; Rearranging a set of real numbers in ascending or descending order. For example,",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 16,
+      "code": "M1-1.16",
+      "text": "compute terms of a sequence given a rule;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 17,
+      "code": "M1-1.17",
+      "text": "derive an appropriate rule given the terms of a sequence;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 18,
+      "code": "M1-1.18",
+      "text": "divide a quantity in a given ratio; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 1,
+      "obj_no": 19,
+      "code": "M1-1.19",
+      "text": "solve problems involving concepts in number theory and computation.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 1,
+      "code": "M1-2.1",
+      "text": "calculate:",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 2,
+      "code": "M1-2.2",
+      "text": "calculate:",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 3,
+      "code": "M1-2.3",
+      "text": "express a profit, loss, discount, markup and purchase tax, as a percentage of some value;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 4,
+      "code": "M1-2.4",
+      "text": "solve problems involving marked price, selling price, cost price, profit, loss or discount;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 5,
+      "code": "M1-2.5",
+      "text": "solve problems involving payments by instalments as in the case of hire purchase and mortgages;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 6,
+      "code": "M1-2.6",
+      "text": "solve problems involving simple Principal, time, rate, amount. interest;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 7,
+      "code": "M1-2.7",
+      "text": "solve problems involving compound interest; interest. The use of calculators is encouraged.",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 8,
+      "code": "M1-2.8",
+      "text": "solve problems involving appreciation and depreciation;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 9,
+      "code": "M1-2.9",
+      "text": "solve problems involving measures and money; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 2,
+      "obj_no": 10,
+      "code": "M1-2.10",
+      "text": "solve problems involving:",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 1,
+      "code": "M1-3.1",
+      "text": "explain concepts relating to sets; of sets using words, membership of a set, cardinality of a set, finite and infinite sets, universal set, empty set, complement of a set, subsets.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 2,
+      "code": "M1-3.2",
+      "text": "represent a set in various forms;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 3,
+      "code": "M1-3.3",
+      "text": "list subsets of a given set; Identifying the subsets as well as determining the number of subsets of a set with n elements.",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 4,
+      "code": "M1-3.4",
+      "text": "determine elements in intersections, unions and complements of sets;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 5,
+      "code": "M1-3.5",
+      "text": "describe relationships among sets using set notation and symbols; equivalent sets, intersection, disjoint sets and union of sets.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 6,
+      "code": "M1-3.6",
+      "text": "draw Venn diagrams to represent Not more than 4 sets including the universal set. relationships among sets;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 7,
+      "code": "M1-3.7",
+      "text": "use Venn diagrams to represent the relationships among sets; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 3,
+      "obj_no": 8,
+      "code": "M1-3.8",
+      "text": "solve problems in Number Theory,",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 1,
+      "code": "M1-4.1",
+      "text": "convert units of length, mass, area, volume, capacity;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 2,
+      "code": "M1-4.2",
+      "text": "use the appropriate SI unit of Refer to Module 1, SO 1.8. measure for area, volume, capacity, mass, temperature and time (24-hour clock) and other derived quantities;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 3,
+      "code": "M1-4.3",
+      "text": "determine the perimeter of a plane shape; compound and irregular shapes.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 4,
+      "code": "M1-4.4",
+      "text": "calculate the length of an arc of a circle;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 5,
+      "code": "M1-4.5",
+      "text": "estimate the area of plane shapes; formulae.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 6,
+      "code": "M1-4.6",
+      "text": "calculate the area of polygons and circles;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 7,
+      "code": "M1-4.7",
+      "text": "calculate the area of a sector of a circle;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 8,
+      "code": "M1-4.8",
+      "text": "calculate the surface area of solids; pyramids including cones; spheres. Surface area of sphere, 𝐴 = 4𝜋𝑟 2",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 9,
+      "code": "M1-4.9",
+      "text": "calculate the volume of solids; Prism including cube and cuboid, cylinder, right pyramid, cone and sphere. Volume of sphere, 4",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 10,
+      "code": "M1-4.10",
+      "text": "solve the problems involving the Average speed. relations among time, distance and speed;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 11,
+      "code": "M1-4.11",
+      "text": "estimate the margin of error for a given measurement;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 12,
+      "code": "M1-4.12",
+      "text": "use scales and scale drawings to (Link to Geography, associate with map drawing determine distances and areas; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 4,
+      "obj_no": 13,
+      "code": "M1-4.13",
+      "text": "solve problems involving measurement. shapes and solids.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 1,
+      "code": "M1-5.1",
+      "text": "use symbols to represent numbers, operations, variables and relations;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 2,
+      "code": "M1-5.2",
+      "text": "translate between algebraic symbols and worded expressions;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 3,
+      "code": "M1-5.3",
+      "text": "evaluate arithmetic operations involving directed numbers;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 4,
+      "code": "M1-5.4",
+      "text": "simplify algebraic expressions using the four basic operations;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 5,
+      "code": "M1-5.5",
+      "text": "evaluate expressions involving binary operations (other than the four basic operations);",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 6,
+      "code": "M1-5.6",
+      "text": "substitute numbers for variables in algebraic expressions;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 7,
+      "code": "M1-5.7",
+      "text": "apply the distributive law to factorise or expand algebraic expressions; 𝑥(𝑎 + 𝑏) = 𝑎𝑥 + 𝑏𝑥",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 8,
+      "code": "M1-5.8",
+      "text": "simplify algebraic fractions; The four basic operations on algebraic fractions.",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 9,
+      "code": "M1-5.9",
+      "text": "use the laws of indices to manipulate expressions with integral indices; (i)",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 10,
+      "code": "M1-5.10",
+      "text": "solve linear equations in unknown;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 11,
+      "code": "M1-5.11",
+      "text": "Solve a simple linear inequality in one unknown;",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 12,
+      "code": "M1-5.12",
+      "text": "change the subject of formulae; Equations of the type to include:",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 13,
+      "code": "M1-5.13",
+      "text": "factorise simple algebraic expressions; 𝑎𝑥 + 𝑏𝑥",
+      "needs_human_review": true
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 14,
+      "code": "M1-5.14",
+      "text": "solve worded problems; and, Linear equations and Linear inequalities.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 5,
+      "obj_no": 15,
+      "code": "M1-5.15",
+      "text": "prove two algebraic expressions to be identical.",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 6,
+      "obj_no": 1,
+      "code": "M1-6.1",
+      "text": "draw graphs of linear functions; function (𝑦 = 𝑐; 𝑥 = 𝑘; 𝑦 = 𝑚𝑥 + 𝑐; where 𝑚, 𝑐 and 𝑘 are real numbers).",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 6,
+      "obj_no": 2,
+      "code": "M1-6.2",
+      "text": "determine the intercepts of the graph of linear functions; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 1,
+      "topic_no": 6,
+      "obj_no": 3,
+      "code": "M1-6.3",
+      "text": "solve problems involving graphs of linear functions.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 1,
+      "code": "M2-1.1",
+      "text": "differentiate between sample and Sample statistics and population parameters. population attributes;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 2,
+      "code": "M2-1.2",
+      "text": "construct a frequency table for a given set of data;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 3,
+      "code": "M2-1.3",
+      "text": "construct statistical diagrams; Pie charts and bar charts.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 4,
+      "code": "M2-1.4",
+      "text": "determine measures of central Ungrouped data: mean, median and mode. tendency for raw ungrouped data;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 5,
+      "code": "M2-1.5",
+      "text": "determine when it is most Levels of measurement (measurement scales): appropriate to use the mean, nominal, ordinal, interval and ratio. median and mode as the average for a set of data; Sets with extreme values or recurring values.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 6,
+      "code": "M2-1.6",
+      "text": "determine the measures of Range, interquartile range and semi-interquartile dispersion (spread) for raw, range; ungrouped data;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 7,
+      "code": "M2-1.7",
+      "text": "analyse statistical diagrams; Finding the mean, mode, median, range, quartiles, interquartile range, semi-interquartile range; trends and patterns.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 8,
+      "code": "M2-1.8",
+      "text": "use standard deviation to compare sets of ungrouped data; required.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 9,
+      "code": "M2-1.9",
+      "text": "determine the proportion or percentage of the sample above or below a given value from raw ungrouped data or frequency table;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 10,
+      "code": "M2-1.10",
+      "text": "identify the sample space for Including the use of coins, dice and playing cards. simple experiment; and, Simple probabilities.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 1,
+      "obj_no": 11,
+      "code": "M2-1.11",
+      "text": "make inference(s) from statistics.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 1,
+      "code": "M2-2.1",
+      "text": "factorise algebraic expressions; Expressions of the type:",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 2,
+      "code": "M2-2.2",
+      "text": "change the subject of formulae; Equations of the type to include:",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 3,
+      "code": "M2-2.3",
+      "text": "solve simultaneous linear equations, in two unknowns, algebraically;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 4,
+      "code": "M2-2.4",
+      "text": "rewrite a quadratic expression in the form a( x + h) + k ; 2",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 5,
+      "code": "M2-2.5",
+      "text": "solve quadratic equations algebraically; completing the square.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 6,
+      "code": "M2-2.6",
+      "text": "solve worded problems; Two simultaneous linear equations, quadratic equations.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 7,
+      "code": "M2-2.7",
+      "text": "solve a pair of equations in two variables when one equation is quadratic or non-linear and the other linear;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 8,
+      "code": "M2-2.8",
+      "text": "represent direct and inverse variation symbolically; and, 1 𝑦 varies inversely as 𝑥: 𝑦 ∝ , 𝑦 = 𝑥",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 2,
+      "obj_no": 9,
+      "code": "M2-2.9",
+      "text": "solve problems involving direct variation and inverse variation.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 1,
+      "code": "M2-3.1",
+      "text": "explain basic concepts associated with relations; examples and non-examples of relations, domain, range, image, co-domain.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 2,
+      "code": "M2-3.2",
+      "text": "represent a relation in various ways; graphically, algebraically.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 3,
+      "code": "M2-3.3",
+      "text": "state the characteristics that define a function; examples of functions.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 4,
+      "code": "M2-3.4",
+      "text": "use functional notation; For example, 𝑓 ∶ 𝑥 à 𝑥 2 ; or 𝑓(𝑥) = 𝑥 2 as well as 𝑦 = 𝑓(𝑥) for given domains.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 5,
+      "code": "M2-3.5",
+      "text": "distinguish between a relation and a function; (vertical line test).",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 6,
+      "code": "M2-3.6",
+      "text": "determine the gradient of a straight line;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 7,
+      "code": "M2-3.7",
+      "text": "determine the equation of a straight line; (a)",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 8,
+      "code": "M2-3.8",
+      "text": "solve problems involving the gradient of parallel and perpendicular lines;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 9,
+      "code": "M2-3.9",
+      "text": "determine from co-ordinates on a line segment: midpoint.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 10,
+      "code": "M2-3.10",
+      "text": "solve a pair of simultaneous linear equations in two unknowns graphically;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 11,
+      "code": "M2-3.11",
+      "text": "derive the composition of functions; example, 𝑓𝑔, 𝑓 2 given 𝑓 and 𝑔.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 12,
+      "code": "M2-3.12",
+      "text": "state the relationship between a function and its inverse;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 13,
+      "code": "M2-3.13",
+      "text": "derive the inverse of a function;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 14,
+      "code": "M2-3.14",
+      "text": "evaluate a function 𝑓(𝑥) at a given value of 𝑥;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 15,
+      "code": "M2-3.15",
+      "text": "draw the graph of a quadratic function;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 16,
+      "code": "M2-3.16",
+      "text": "use the graph of a quadratic function to identify its features; given image;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 17,
+      "code": "M2-3.17",
+      "text": "interpret the graph of a quadratic function; point, tangent, turning point.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 18,
+      "code": "M2-3.18",
+      "text": "determine the equation of the axis of symmetry and the maximum or minimum value of a quadratic function expressed in the form",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 19,
+      "code": "M2-3.19",
+      "text": "sketch the graph of a quadratic function expressed in the form",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 3,
+      "obj_no": 20,
+      "code": "M2-3.20",
+      "text": "solve problems involving graphs of linear and non-linear functions.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 1,
+      "code": "M2-4.1",
+      "text": "explain concepts relating geometry; and perpendicular lines, line segments, rays, curves, planes; types of angles; number of faces, edges and vertices.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 2,
+      "code": "M2-4.2",
+      "text": "draw angles and line segments accurately using appropriate instruments;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 3,
+      "code": "M2-4.3",
+      "text": "measure angles and line segments accurately using appropriate instruments;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 4,
+      "code": "M2-4.4",
+      "text": "construct lines, angles, and polygons using appropriate instruments; Bisecting line segments and angles.",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 5,
+      "code": "M2-4.5",
+      "text": "identify the type(s) of symmetry Line(s) of symmetry, rotational symmetry, possessed by a given plane figure;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 6,
+      "code": "M2-4.6",
+      "text": "solve geometric problems using properties of: angles:",
+      "needs_human_review": true
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 7,
+      "code": "M2-4.7",
+      "text": "use Pythagoras’ theorem to solve problems;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 8,
+      "code": "M2-4.8",
+      "text": "define the trigonometric ratios of acute angles in a right triangle;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 9,
+      "code": "M2-4.9",
+      "text": "relate objects in the physical world to geometric objects; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 4,
+      "obj_no": 10,
+      "code": "M2-4.10",
+      "text": "apply the trigonometric ratios to solve problems. elevation and depression.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 5,
+      "obj_no": 1,
+      "code": "M2-5.1",
+      "text": "explain concepts associated with Concept of a vector, magnitude, unit vector, vectors; direction, scalar.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 5,
+      "obj_no": 2,
+      "code": "M2-5.2",
+      "text": "simplify expressions involving vectors; multiplication.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 5,
+      "obj_no": 3,
+      "code": "M2-5.3",
+      "text": "explain basic concepts associated with matrices; identity rectangular, order.",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 5,
+      "obj_no": 4,
+      "code": "M2-5.4",
+      "text": "solve problems involving matrix operations;",
+      "needs_human_review": false
+    },
+    {
+      "module": 2,
+      "topic_no": 5,
+      "obj_no": 5,
+      "code": "M2-5.5",
+      "text": "use matrices to solve simple problems in Arithmetic and Algebra.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 1,
+      "code": "M3-1.1",
+      "text": "construct a frequency table for a given set of data; Grouped data.",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 2,
+      "code": "M3-1.2",
+      "text": "determine class features for a given set of data; midpoint, class width.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 3,
+      "code": "M3-1.3",
+      "text": "construct statistical diagrams; Line graphs, histograms with bars of equal width and frequency polygons.",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 4,
+      "code": "M3-1.4",
+      "text": "determine measures of central Grouped data: modal class, median class and the tendency for raw grouped data; estimate of the mean.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 5,
+      "code": "M3-1.5",
+      "text": "determine the measures of dispersion (spread) for grouped data;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 6,
+      "code": "M3-1.6",
+      "text": "use standard deviation to compare sets of data; required.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 7,
+      "code": "M3-1.7",
+      "text": "draw cumulative frequency curve Appropriate scales for axes. (Ogive); Class boundaries as domain.",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 8,
+      "code": "M3-1.8",
+      "text": "analyse statistical diagrams; Finding the mean, mode, median, range, quartiles, interquartile range, semi-interquartile range; trends and patterns.",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 9,
+      "code": "M3-1.9",
+      "text": "determine the proportion or percentage of the sample above or below a given value from raw grouped data, frequency table or cumulative frequency curve;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 10,
+      "code": "M3-1.10",
+      "text": "determine experimental and theoretical probabilities of simple events; and, independent events.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 1,
+      "obj_no": 11,
+      "code": "M3-1.11",
+      "text": "make inference(s) from statistics.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 2,
+      "obj_no": 1,
+      "code": "M3-2.1",
+      "text": "draw a graph to represent a linear inequality in two variables;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 2,
+      "obj_no": 2,
+      "code": "M3-2.2",
+      "text": "represent the solution of linear Using: inequalities in one variable; (a)",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 2,
+      "obj_no": 3,
+      "code": "M3-2.3",
+      "text": "use linear programming techniques to graphically solve problems involving two variables;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 2,
+      "obj_no": 4,
+      "code": "M3-2.4",
+      "text": "draw graphs of non-linear functions; is a constant.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 2,
+      "obj_no": 5,
+      "code": "M3-2.5",
+      "text": "interpret graphs of functions; and, time graphs.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 2,
+      "obj_no": 6,
+      "code": "M3-2.6",
+      "text": "solve problems involving graphs of linear and non-linear functions. linear functions.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 1,
+      "code": "M3-3.1",
+      "text": "solve geometric problems using Radius, diameter, chord, circumference, arc, properties of circles and circle tangent, segment, sector, semicircle, pi. theorems; Determining and justifying angles using the circle theorems:",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 2,
+      "code": "M3-3.2",
+      "text": "represent translations in a plane using vectors; y",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 3,
+      "code": "M3-3.3",
+      "text": "determine and represent the location of:",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 4,
+      "code": "M3-3.4",
+      "text": "state the relationship between an object and its image in the plane under geometric transformations;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 5,
+      "code": "M3-3.5",
+      "text": "describe a transformation given an object and its image; Reflection: mirror line/ axis of symmetry.",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 6,
+      "code": "M3-3.6",
+      "text": "locate the image of an object under a combination of transformations; (a)",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 7,
+      "code": "M3-3.7",
+      "text": "use the sine and cosine rules to solve problems involving triangles;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 8,
+      "code": "M3-3.8",
+      "text": "calculate the area of a triangle given two sides and the angle they form;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 9,
+      "code": "M3-3.9",
+      "text": "calculate the area of a segment of a circle; and,",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 3,
+      "obj_no": 10,
+      "code": "M3-3.10",
+      "text": "solve problems involving bearings. bearing of one point with respect to the other; bearing of one point relative to another point given the position of the points. Bearing written in 3-digit format for example 060𝑜 .",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 1,
+      "code": "M3-4.1",
+      "text": "write the position vector of a Displacement and position vectors; including 𝑎 the use of co-ordinates in the x-y plane to point 𝑃(𝑎, 𝑏) as ⃗⃗⃗⃗⃗",
+      "needs_human_review": true
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 2,
+      "code": "M3-4.2",
+      "text": "determine the magnitude of a vector;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 3,
+      "code": "M3-4.3",
+      "text": "determine the direction of a vector;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 4,
+      "code": "M3-4.4",
+      "text": "use vectors to solve problems in Points in a straight line, Parallel lines; geometry; displacement, velocity, weight.",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 5,
+      "code": "M3-4.5",
+      "text": "evaluate the determinant of a ‘2 x 2’ matrix;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 6,
+      "code": "M3-4.6",
+      "text": "define the multiplicative inverse of a non-singular square matrix;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 7,
+      "code": "M3-4.7",
+      "text": "obtain the inverse of a non-singular ‘2 x 2’ matrix;",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 8,
+      "code": "M3-4.8",
+      "text": "determine a ‘2 x 2’ matrix associated with a specified transformation; and, plane (where the origin remains fixed).",
+      "needs_human_review": false
+    },
+    {
+      "module": 3,
+      "topic_no": 4,
+      "obj_no": 9,
+      "code": "M3-4.9",
+      "text": "use matrices to solve simple Data matrices, equality. Use of matrices to problems in Arithmetic, Algebra and",
+      "needs_human_review": true
+    }
+  ]
+}

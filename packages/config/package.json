@@ -1,0 +1,26 @@
+{
+  "name": "@edmar/config",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "description": "Shared eslint, tsconfig and prettier presets for the EdMar monorepo",
+  "main": "index.js",
+  "exports": {
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/boundaries": "./eslint/boundaries.js",
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./prettier": "./prettier.config.js"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "echo '@edmar/config: no TypeScript sources to typecheck' && exit 0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.11.1",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-boundaries": "^4.2.2",
+    "globals": "^15.9.0",
+    "typescript-eslint": "^8.7.0"
+  }
+}
