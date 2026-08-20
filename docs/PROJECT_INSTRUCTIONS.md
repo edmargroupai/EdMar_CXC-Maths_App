@@ -11,30 +11,18 @@ on any conflict.
 
 ## Current phase
 
-**P06 — Student, progress and commerce schema** (migration 0004_student.sql: `profiles`,
-`admin_role_grants`, `practice_sessions`, `practice_session_items`, `attempts`,
-`attempt_skills`, `exam_sessions`, `exam_responses`, `student_skill_mastery`,
-`student_topic_mastery`, `student_daily_usage`, `student_bookmarks`, `entitlements`,
-`subscription_events`, `audit_log`, `analytics_events`, `content_jobs`, `ai_generations`,
-`app_config` + config seeds; `fn_handle_new_user` trigger on `auth.users`).
+**P07 — RLS and the RLS test suite** (0005_rls.sql, `supabase/tests/rls/*.sql`). Every policy
+in §5.2's matrix, the four helper functions in §5.1 (`auth_role`, `is_staff`, `has_role`,
+`has_premium`), and a test for **both directions of every cell** (a student cannot read a
+draft, another student's attempts, or a premium payload; staff/service-role access works as
+specified). Per the spec: **this phase does not complete on "the tests I wrote pass" — it
+completes when a catalogue query proves RLS is enabled on all 45 tables and no table was
+missed.** The paywall policy (§5.3, on `question_payloads`) is the single most important
+policy in the system — get its test right. Anonymous access (§5.4) reuses the same policies
+via Supabase anonymous sign-in; no special-cased public read policy.
 
-**0004 must also add the FK constraints P05 deferred**, since `profiles` didn't exist yet
-when 0003 ran: `questions.created_by`, `question_versions.created_by`,
-`question_objectives.confirmed_by`, `question_reviews.reviewer_id`,
-`question_reports.reporter_id` (`ON DELETE SET NULL`), `question_reports.resolved_by` — all
-`references profiles(id)`. Each column already exists as a plain `uuid` in 0003; 0004 only
-needs `ALTER TABLE ... ADD CONSTRAINT ... FOREIGN KEY`.
-
-**Outstanding human task, on the critical path for P05 → P12 (question content), not for P05's
-own schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
-(two-column PDF extraction bled the CONTENT/EXPLANATORY NOTES column into the objective text —
-§0.3). A curriculum reviewer must correct `content/taxonomy/csec_2027_taxonomy_seed.json` and
-re-run `node scripts/gen-taxonomy-seed.js` before any question is mapped against one of those 44
-objectives. Query the current list with:
-`select code, statement from specific_objectives where needs_human_review order by code;`
-
-**Outstanding human task, on the critical path for P05 → P12 (question content), not for P05's
-own schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
+**Outstanding human task, on the critical path for P05 → P12 (question content), not blocking
+schema work**: 44 of 159 V2027 specific objectives are flagged `needs_human_review = true`
 (two-column PDF extraction bled the CONTENT/EXPLANATORY NOTES column into the objective text —
 §0.3). A curriculum reviewer must correct `content/taxonomy/csec_2027_taxonomy_seed.json` and
 re-run `node scripts/gen-taxonomy-seed.js` before any question is mapped against one of those 44
@@ -48,15 +36,19 @@ not divide evenly across the 2 topics. `topics.paper02_marks` is left `NULL` for
 guessing a split (4/5, 5/4, or a proportional split by objective count all being invented, not
 sourced). Resolve alongside the `needs_human_review` objectives, by the same curriculum reviewer.
 
-P01–P05 are complete: monorepo foundation; shared types/design packages; local Supabase running
-migrations 0001 (enums), 0002 (curriculum schema, seeded with 3 modules / 15 topics / 159 V2027
-objectives) and 0003 (the 16-table question bank schema — `questions` through `paper_questions`,
-plus `trg_qv_immutable`, `trg_qo_exactly_one_correct`, `trg_question_status_transition`, and
-`answer_spec` JSON Schema validation via `pg_jsonschema`) — 113 passing pgTAP assertions. Also an
-out-of-sequence mobile visual preview (`apps/mobile`, two screens, done at the user's request —
-see the git log for `feat(mobile): onboarding + sign-in visual preview`). See §32 of the
-Technical Build Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out
-of order; the dependency graph in §32.1 is binding.
+P01–P06 are complete: monorepo foundation; shared types/design packages; local Supabase running
+migrations 0001 (enums), 0002 (curriculum, 3 modules/15 topics/159 V2027 objectives), 0003 (the
+16-table question bank) and 0004 (identity, student progress, commerce, ops — `profiles` through
+`app_config`, plus `fn_handle_new_user` and the six FK constraints 0003 deferred) — **all 45
+tables now exist**, 138 passing pgTAP assertions. Also an out-of-sequence mobile visual preview
+(`apps/mobile`, two screens, done at the user's request — see the git log for
+`feat(mobile): onboarding + sign-in visual preview`) and its Vercel build config
+(`fix(mobile): configure Vercel build for the Expo web export`). See §32 of the Technical Build
+Spec for the full 22-phase plan and acceptance criteria. Do not start a phase out of order; the
+dependency graph in §32.1 is binding. **No RLS policy exists on any table yet** — every table
+created so far is readable/writable by any authenticated role until P07 lands; this is expected
+at this stage (see the note repeated at the top of each 000X migration) but means the local
+Supabase instance must never hold anything sensitive.
 
 **Source material added by the founder**: `content/sources/cxc-past-papers-answer-keys/` (28
 PDFs, moved here from a loose repo-root folder the founder confirmed adding). This is
